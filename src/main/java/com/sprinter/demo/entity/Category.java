@@ -1,4 +1,7 @@
 package com.sprinter.demo.entity;
 
-public class Category {
+import javax.persistence.Entity;
+
+@Entity
+public class Category extends GenericEntity <Category>{
 }

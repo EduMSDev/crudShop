@@ -1,4 +1,7 @@
 package com.sprinter.demo.entity;
 
-public class Order {
+import javax.persistence.Entity;
+
+@Entity
+public class Order extends GenericEntity<Order> {
 }
