@@ -3,10 +3,12 @@ package com.sprinter.demo.controller;
 import com.sprinter.demo.entity.GenericEntity;
 import com.sprinter.demo.repository.GenericRepository;
 import com.sprinter.demo.service.GenericService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@Slf4j
 public abstract class GenericController<T extends GenericEntity<T>> {
 
     protected final GenericService<T> service;
@@ -28,9 +30,9 @@ public abstract class GenericController<T extends GenericEntity<T>> {
     }
 
     @PostMapping("/")
-    public T add(@RequestParam Long id) {
+    public T add(@RequestBody T entity) {
         System.out.println("Incluyendo entidad");
-        return service.findById(id);
+        return service.add(entity);
     }
 
     @DeleteMapping("/")
@@ -39,7 +41,17 @@ public abstract class GenericController<T extends GenericEntity<T>> {
         service.delete(id);
     }
 
-    //PUT /tickets/12- Actualiza el ticket #12
-    //PATCH /tickets/12- Actualiza parcialmente el ticket #12
+    //todo terminar la actualizacion total
+    @PutMapping("/")
+    public void update(@RequestParam Long id, @RequestBody T entity) {
+        System.out.println("Actulizando entitdad");
+        service.delete(id);
+    }
 
+    //todo terminar la actualizacion total partial
+    @PatchMapping("/")
+    public void partialUpdate(@RequestParam Long id, @RequestBody T entity) {
+        System.out.println("Actualizando parcialmente la entidad");
+        service.delete(id);
+    }
 }
