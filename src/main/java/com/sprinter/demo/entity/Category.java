@@ -3,7 +3,9 @@ package com.sprinter.demo.entity;
 import lombok.Getter;
 import lombok.Setter;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.OneToMany;
 import java.util.List;
 
@@ -13,8 +15,8 @@ import java.util.List;
 @Entity
 public class Category extends GenericEntity<Category> {
 
-    private String name;
+    private String description;
 
-    @OneToMany(mappedBy = "category")
+    @OneToMany(mappedBy = "category", fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
     private List<Product> products;
 }

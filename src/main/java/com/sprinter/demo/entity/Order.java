@@ -3,8 +3,8 @@ package com.sprinter.demo.entity;
 import lombok.Getter;
 import lombok.Setter;
 
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.util.List;
 
 @Getter
 @Setter
@@ -12,9 +12,12 @@ import javax.persistence.Table;
 @Table(name = "Orders")
 public class Order extends GenericEntity<Order> {
 
-    private String name;
-
-    private String description;
+    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
+    private Client client;
 
     private double price;
+
+    @ManyToMany(mappedBy = "orders", fetch = FetchType.LAZY, cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
+    private List<Product> products;
 }
+
