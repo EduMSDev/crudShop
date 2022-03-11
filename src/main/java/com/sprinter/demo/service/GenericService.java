@@ -2,9 +2,10 @@ package com.sprinter.demo.service;
 
 import com.sprinter.demo.entity.GenericEntity;
 import com.sprinter.demo.repository.GenericRepository;
-import org.springframework.stereotype.Service;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;
+
 
 public class GenericService<T extends GenericEntity<T>> {
 
