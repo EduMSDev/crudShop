@@ -4,16 +4,17 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.Entity;
-
+import javax.persistence.Table;
 
 @Getter
 @Setter
 @Entity
-public class Client extends GenericEntity<Client> {
+@Table(name = "Orders")
+public class Order extends GenericEntity<Order> {
 
     private String name;
 
-    private String surname;
+    private String description;
 
-
+    private double price;
 }

@@ -2,7 +2,6 @@ package com.sprinter.demo.controller;
 
 import com.sprinter.demo.entity.Category;
 import com.sprinter.demo.repository.GenericRepository;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
