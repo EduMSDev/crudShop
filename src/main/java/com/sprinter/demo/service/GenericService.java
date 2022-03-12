@@ -4,6 +4,7 @@ import com.sprinter.demo.entity.GenericEntity;
 import com.sprinter.demo.repository.GenericRepository;
 
 import java.util.List;
+import java.util.Optional;
 
 
 public class GenericService<T extends GenericEntity<T>> {
@@ -18,19 +19,21 @@ public class GenericService<T extends GenericEntity<T>> {
         return (List<T>) genericRepository.findAll();
     }
 
-    public T findById(Long id) {
-        return genericRepository.findById(id).orElse(null);
+    public Optional<T> findById(Long id) {
+        return genericRepository.findById(id);
     }
 
     public T add(T entity) {
         return genericRepository.save(entity);
     }
 
+    //todo terminar
     public T update(T id) {
         return null;
         //return genericRepository.sa(T);
     }
 
+    //todo terminar
     public T partialUpdate(T id) {
         return null;
         //return genericRepository.save(T);
