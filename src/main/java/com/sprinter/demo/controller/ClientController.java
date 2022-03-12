@@ -6,11 +6,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 
-@RequestMapping("/client")
+@RequestMapping("/clients")
 @RestController
 public class ClientController extends GenericController<Client> {
 
     protected ClientController(GenericRepository<Client> repository) {
         super(repository);
     }
+
 }

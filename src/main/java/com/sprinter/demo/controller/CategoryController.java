@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 
-@RequestMapping("/category")
+@RequestMapping("/categories")
 @RestController
 public class CategoryController extends GenericController<Category> {
 

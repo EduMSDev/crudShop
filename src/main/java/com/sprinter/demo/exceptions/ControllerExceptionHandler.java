@@ -13,8 +13,8 @@ import java.util.Date;
 @Slf4j
 public class ControllerExceptionHandler {
 
-    @ExceptionHandler(EntityNotFoundException.class)
-    public ResponseEntity<ErrorMessage> entityNotFoundException(EntityNotFoundException ex, WebRequest request) {
+    @ExceptionHandler(ResourceNotFoundException.class)
+    public ResponseEntity<ErrorMessage> resourceNotFoundException(ResourceNotFoundException ex, WebRequest request) {
         log.error("Se ha producido la siguiente excepcion: " + ex.getMessage());
         ErrorMessage message = ErrorMessage.builder().code(HttpStatus.NOT_FOUND.value()).
                 date(new Date()).message(ex.getMessage()).description(request.getDescription(false)).build();
