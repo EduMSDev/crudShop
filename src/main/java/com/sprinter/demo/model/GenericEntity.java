@@ -1,13 +1,15 @@
-package com.sprinter.demo.entity;
+package com.sprinter.demo.model;
 
 import lombok.Getter;
 import lombok.Setter;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
-import java.sql.Date;
+import java.util.Date;
 
 
 @Getter
@@ -21,7 +23,9 @@ public abstract class GenericEntity<T> {
 
     private String name;
 
+    @CreationTimestamp
     private Date modifiedAt;
 
-    private Date createdAT;
+    @UpdateTimestamp
+    private Date createdAt;
 }

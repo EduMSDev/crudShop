@@ -1,7 +1,6 @@
 package com.sprinter.demo.controller;
 
-import com.sprinter.demo.entity.GenericEntity;
-import com.sprinter.demo.exceptions.ResourceNotFoundException;
+import com.sprinter.demo.model.GenericEntity;
 import com.sprinter.demo.repository.GenericRepository;
 import com.sprinter.demo.service.GenericService;
 import lombok.extern.slf4j.Slf4j;
@@ -22,7 +21,7 @@ public abstract class GenericController<T extends GenericEntity<T>> {
 
     @GetMapping("/")
     public ResponseEntity<List<T>> findAll() {
-        log.info("Tener todos");
+        log.info("Tener todos ");
         final List<T> allEntities = service.findAll();
         if (allEntities.isEmpty()) {
             return new ResponseEntity<>(allEntities, HttpStatus.NO_CONTENT);
@@ -34,8 +33,7 @@ public abstract class GenericController<T extends GenericEntity<T>> {
     @GetMapping("/{id}")
     public ResponseEntity<T> findById(@RequestParam @PathVariable final Long id) {
         log.info("Tener por id");
-        T entity = service.findById(id).orElseThrow(() -> new ResourceNotFoundException("No se ha encontrado ninguna entidad con id: " + id));
-        return ResponseEntity.ok(entity);
+        return ResponseEntity.ok(service.findById(id));
     }
 
     @PostMapping("/")
@@ -51,12 +49,10 @@ public abstract class GenericController<T extends GenericEntity<T>> {
         return ResponseEntity.ok(null);
     }
 
-    //todo terminar la actualizacion total
     @PutMapping("/")
     public ResponseEntity<T> update(@RequestParam Long id, @RequestBody final T entity) {
         log.info("Actulizando entidad");
-        service.delete(id);
-        return ResponseEntity.ok(null);
+        return ResponseEntity.ok(service.update(id, entity));
     }
 
     //todo terminar la actualizacion total partial

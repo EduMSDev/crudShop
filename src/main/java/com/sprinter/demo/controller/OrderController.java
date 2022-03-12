@@ -1,16 +1,16 @@
 package com.sprinter.demo.controller;
 
-import com.sprinter.demo.model.Category;
+import com.sprinter.demo.model.Order;
 import com.sprinter.demo.repository.GenericRepository;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 
-@RequestMapping("/categories")
+@RequestMapping("/orders")
 @RestController
-public class CategoryController extends GenericController<Category> {
+public class OrderController extends GenericController<Order> {
 
-    protected CategoryController(GenericRepository<Category> repository) {
+    protected OrderController(GenericRepository<Order> repository) {
         super(repository);
     }
 

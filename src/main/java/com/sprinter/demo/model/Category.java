@@ -1,4 +1,4 @@
-package com.sprinter.demo.entity;
+package com.sprinter.demo.model;
 
 import lombok.Getter;
 import lombok.Setter;

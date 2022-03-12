@@ -1,6 +1,6 @@
 package com.sprinter.demo.repository;
 
-import com.sprinter.demo.entity.Product;
+import com.sprinter.demo.model.Product;
 import org.springframework.stereotype.Repository;
 
 @Repository

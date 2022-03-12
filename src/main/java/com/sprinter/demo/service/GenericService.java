@@ -1,13 +1,14 @@
 package com.sprinter.demo.service;
 
-import com.sprinter.demo.entity.GenericEntity;
+import com.sprinter.demo.exceptions.ResourceNotFoundException;
+import com.sprinter.demo.model.GenericEntity;
 import com.sprinter.demo.repository.GenericRepository;
 
 import java.util.List;
-import java.util.Optional;
 
 
 public class GenericService<T extends GenericEntity<T>> {
+
 
     private final GenericRepository<T> genericRepository;
 
@@ -19,27 +20,22 @@ public class GenericService<T extends GenericEntity<T>> {
         return (List<T>) genericRepository.findAll();
     }
 
-    public Optional<T> findById(Long id) {
-        return genericRepository.findById(id);
+    public T findById(Long id) {
+        return genericRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("No se ha encontrado ninguna entidad con id: " + id));
     }
 
     public T add(T entity) {
         return genericRepository.save(entity);
     }
 
-    //todo terminar
-    public T update(T id) {
-        return null;
-        //return genericRepository.sa(T);
-    }
-
-    //todo terminar
-    public T partialUpdate(T id) {
-        return null;
-        //return genericRepository.save(T);
+    public T update(Long id, T entity) {
+        T entityFromDB = this.findById(id);
+        entity.setId(entityFromDB.getId());
+        return genericRepository.save(entity);
     }
 
     public void delete(Long id) {
         genericRepository.deleteById(id);
     }
+
 }

@@ -1,6 +1,6 @@
 package com.sprinter.demo.repository;
 
-import com.sprinter.demo.entity.Category;
+import com.sprinter.demo.model.Category;
 import org.springframework.stereotype.Repository;
 
 @Repository

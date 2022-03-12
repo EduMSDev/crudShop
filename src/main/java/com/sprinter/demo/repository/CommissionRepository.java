@@ -1,6 +1,6 @@
 package com.sprinter.demo.repository;
 
-import com.sprinter.demo.entity.Order;
+import com.sprinter.demo.model.Order;
 import org.springframework.stereotype.Repository;
 
 @Repository
