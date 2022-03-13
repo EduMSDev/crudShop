@@ -4,6 +4,8 @@ import com.sprinter.demo.model.Product;
 import com.sprinter.demo.repository.ProductRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class ProductService extends GenericService<Product, ProductRepository> {
 

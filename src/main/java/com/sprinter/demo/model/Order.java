@@ -1,13 +1,16 @@
 package com.sprinter.demo.model;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
 import java.util.List;
 
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
 @Getter
 @Setter
 @Entity
@@ -15,6 +18,7 @@ import java.util.List;
 public class Order extends GenericEntity {
 
     @JsonBackReference
+    @NotNull(message = "El campo cliente no puede estar vacio")
     @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
     private Client client;
 

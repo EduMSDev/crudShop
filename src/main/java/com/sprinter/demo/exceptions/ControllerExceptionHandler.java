@@ -16,9 +16,11 @@ import java.util.Date;
 @Slf4j
 public class ControllerExceptionHandler extends ResponseEntityExceptionHandler {
 
+    private final String MESSAGE_EXCEPTION = "Se ha producido la siguiente excepcion: ";
+
     @ExceptionHandler(ResourceNotFoundException.class)
     public ResponseEntity<ErrorMessage> resourceNotFoundException(ResourceNotFoundException ex, WebRequest request) {
-        log.error("Se ha producido la siguiente excepcion: " + ex.getMessage());
+        log.error(MESSAGE_EXCEPTION + ex.getMessage());
         ErrorMessage message = ErrorMessage.builder().code(HttpStatus.NOT_FOUND.value()).
                 date(new Date()).message(ex.getMessage()).description(request.getDescription(false)).build();
         return new ResponseEntity<>(message, HttpStatus.NOT_FOUND);
@@ -26,7 +28,8 @@ public class ControllerExceptionHandler extends ResponseEntityExceptionHandler {
 
     @ExceptionHandler(Exception.class)
     public ResponseEntity<ErrorMessage> globalExceptionHandler(Exception ex, WebRequest request) {
-        log.error("Se ha producido la siguiente excepcion: " + ex.getMessage());
+        log.error(MESSAGE_EXCEPTION + ex.getMessage());
+        ex.printStackTrace();
         ErrorMessage message = ErrorMessage.builder().code(HttpStatus.INTERNAL_SERVER_ERROR.value()).
                 date(new Date()).message(ex.getMessage()).description(request.getDescription(false)).build();
         return new ResponseEntity<>(message, HttpStatus.INTERNAL_SERVER_ERROR);
@@ -34,11 +37,9 @@ public class ControllerExceptionHandler extends ResponseEntityExceptionHandler {
 
     @Override
     protected ResponseEntity<Object> handleMethodArgumentNotValid(MethodArgumentNotValidException ex, HttpHeaders headers, HttpStatus status, WebRequest request) {
-        log.error("Se ha producido la siguiente excepcion: " + ex.getMessage());
+        log.error(MESSAGE_EXCEPTION + ex.getMessage());
         ErrorMessage errorMessage = ErrorMessage.builder().code(HttpStatus.INTERNAL_SERVER_ERROR.value()).
                 date(new Date()).message(ex.getMessage()).description(request.getDescription(false)).build();
-        //          new ErrorMessage(new Date(), "Validation Failed",
-        //        ex.getBindingResult().toString());
         return new ResponseEntity(errorMessage, HttpStatus.BAD_REQUEST);
     }
 }

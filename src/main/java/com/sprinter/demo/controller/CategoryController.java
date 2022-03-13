@@ -23,11 +23,4 @@ public class CategoryController extends GenericController<Category, CategoryServ
         log.info("Actualizando parcialmente la categoria");
         return ResponseEntity.ok(this.genericService.partialUpdate(id, category));
     }
-
-    @GetMapping("/products/{id}")
-    public ResponseEntity<Category> getAllProducts(@PathVariable Long id) {
-        return null;
-    }
-
-
 }
