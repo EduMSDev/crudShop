@@ -1,9 +1,12 @@
 package com.sprinter.demo.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import java.util.List;
 
 
@@ -14,9 +17,12 @@ public class Product extends GenericEntity {
 
     private String description;
 
+    @NotBlank(message = "El campo sku no puede estar vacio")
     private String sku;
 
     @ManyToOne
+    @JsonBackReference
+    @NotNull(message = "El campo categoria es obligatorio")
     private Category category;
 
     @ManyToMany(fetch = FetchType.LAZY)

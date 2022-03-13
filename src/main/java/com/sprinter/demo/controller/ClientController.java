@@ -6,6 +6,8 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
+
 
 @RequestMapping("/clients")
 @RestController
@@ -17,7 +19,7 @@ public class ClientController extends GenericController<Client, ClientService> {
     }
 
     @PatchMapping("/{id}")
-    public ResponseEntity<Client> partialUpdateClient(@RequestParam @PathVariable Long id, @RequestBody Client category) {
+    public ResponseEntity<Client> partialUpdateClient(@RequestParam @PathVariable Long id, @RequestBody @Valid Client category) {
         log.info("Actualizando parcialmente el cliente");
         this.genericService.partialUpdate(id, category);
         return ResponseEntity.ok(null);

@@ -1,7 +1,6 @@
 package com.sprinter.demo.controller;
 
 import com.sprinter.demo.model.GenericEntity;
-import com.sprinter.demo.service.GenericService;
 import com.sprinter.demo.service.IGenericService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +8,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @Slf4j
@@ -39,7 +39,7 @@ public abstract class GenericController<T extends GenericEntity, R extends IGene
     }
 
     @PostMapping("/")
-    public ResponseEntity<T> add(@RequestBody final T entity) {
+    public ResponseEntity<T> add(@RequestBody @Valid final T entity) {
         log.info("Incluyendo entidad");
         return ResponseEntity.ok(genericService.add(entity));
     }
@@ -52,7 +52,7 @@ public abstract class GenericController<T extends GenericEntity, R extends IGene
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<T> update(@RequestParam @PathVariable Long id, @RequestBody final T entity) {
+    public ResponseEntity<T> update(@RequestParam @PathVariable Long id, @RequestBody @Valid final T entity) {
         log.info("Actulizando entidad");
         return ResponseEntity.ok(genericService.update(id, entity));
     }
