@@ -21,7 +21,7 @@ import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 @RunWith(MockitoJUnitRunner.class)
-public class GenericServiceTest {
+public class ClientServiceTest {
 
     public final String TEST_NAME = "Test Name";
 
@@ -67,7 +67,6 @@ public class GenericServiceTest {
     public void updateClientTest() {
         Client client = Client.builder().name(TEST_NAME).id(1L).build();
         Client newClient = Client.builder().name("NewTestName").build();
-        ;
 
         given(clientRepository.findById(client.getId())).willReturn(Optional.of(client));
         clientService.update(client.getId(), newClient);

@@ -27,7 +27,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @RunWith(SpringRunner.class)
 @WebMvcTest(ClientController.class)
-public class GenericControllerTest {
+public class ClientControllerTest {
 
     @Autowired
     private MockMvc mockMvc;
@@ -42,7 +42,7 @@ public class GenericControllerTest {
         given(clientService.add(client)).willReturn(client);
 
         mockMvc.perform(post("/clients/").contentType(MediaType.APPLICATION_JSON).
-                        content(JsonUtils.toJson(client))).andDo(print()).andExpect(status().isCreated())
+                        content(JsonUtils.toJson(client))).andExpect(status().isCreated())
                 .andExpect(jsonPath("$.name", is(client.getName())));
 
     }

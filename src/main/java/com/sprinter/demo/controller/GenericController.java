@@ -11,6 +11,17 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 import java.util.List;
 
+/**
+ * Permite usar la  potencia de la herencia
+ * y asi evitar la duplicidad de codigo. Se
+ * encarga de unificar los principales metodos del
+ * CRUD en una sola clase. Aqui se gestionan las comunicaciones
+ * que son similares para todos los controladres de
+ * la api Rest
+ * @param <T> Entidad con la que se quiere trabajar
+ * @param <R> Servicio con el que se quiere trabajar
+ *
+ */
 @Slf4j
 public abstract class GenericController<T extends GenericEntity, R extends IGenericService<T>> {
 

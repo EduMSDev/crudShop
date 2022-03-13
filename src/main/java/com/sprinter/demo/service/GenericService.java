@@ -7,6 +7,15 @@ import com.sprinter.demo.repository.GenericRepository;
 import java.util.List;
 
 
+/**
+ Permite usar la  potencia de la herencia
+ * y asi evitar la duplicidad de codigo. Se
+ * encarga de unificar los principales metodos del
+ * CRUD en una sola clase. Se encarga de manejar toda
+ * la logica de la aplicacion
+ * @param <T> Entidad que se quiere usar
+ * @param <R> Repositorio que se quiere usar.
+ */
 public class GenericService<T extends GenericEntity, R extends GenericRepository<T>> implements IGenericService<T> {
 
     protected R genericRepository;

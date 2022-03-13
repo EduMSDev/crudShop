@@ -16,6 +16,10 @@ import javax.validation.constraints.Size;
 import java.util.Date;
 
 
+/**
+ * Permite la reduccion de campos
+ * repetidos,entre otras cosas.
+ */
 @Getter
 @Setter
 @MappedSuperclass
