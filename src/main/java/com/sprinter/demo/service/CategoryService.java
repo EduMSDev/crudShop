@@ -1,20 +1,20 @@
 package com.sprinter.demo.service;
 
 import com.sprinter.demo.model.Category;
-import com.sprinter.demo.repository.GenericRepository;
+import com.sprinter.demo.repository.CategoryRepository;
 import org.springframework.stereotype.Service;
 
 @Service
-public class CategoryService extends GenericService<Category> {
+public class CategoryService extends GenericService<Category, CategoryRepository> {
 
-    public CategoryService(GenericRepository<Category> repository) {
+    public CategoryService(CategoryRepository repository) {
         super(repository);
     }
 
-    public Category partialUpdate(Long id, Category catego) {
+    public Category partialUpdate(Long id, Category category) {
         Category catergoryFromDB = super.findById(id);
-        catergoryFromDB.setName(catego.getName() == null ? catergoryFromDB.getName() : catego.getName());
-        catergoryFromDB.setDescription(catego.getDescription() == null ? catergoryFromDB.getDescription() : catego.getDescription());
-        return super.add(catego);
+        catergoryFromDB.setName(category.getName() == null ? catergoryFromDB.getName() : category.getName());
+        catergoryFromDB.setDescription(category.getDescription() == null ? catergoryFromDB.getDescription() : category.getDescription());
+        return super.add(catergoryFromDB);
     }
 }

@@ -1,13 +1,13 @@
 package com.sprinter.demo.service;
 
 import com.sprinter.demo.model.Product;
-import com.sprinter.demo.repository.GenericRepository;
+import com.sprinter.demo.repository.ProductRepository;
 import org.springframework.stereotype.Service;
 
 @Service
-public class ProductService extends GenericService<Product> {
+public class ProductService extends GenericService<Product, ProductRepository> {
 
-    public ProductService(GenericRepository<Product> repository) {
+    public ProductService(ProductRepository repository) {
         super(repository);
     }
 

@@ -4,5 +4,5 @@ import com.sprinter.demo.model.Order;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface CommissionRepository extends GenericRepository<Order> {
+public interface OrderRepository extends GenericRepository<Order> {
 }

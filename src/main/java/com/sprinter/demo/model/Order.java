@@ -10,7 +10,7 @@ import java.util.List;
 @Setter
 @Entity
 @Table(name = "Orders")
-public class Order extends GenericEntity<Order> {
+public class Order extends GenericEntity {
 
     @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
     private Client client;

@@ -1,17 +1,26 @@
 package com.sprinter.demo.controller;
 
 import com.sprinter.demo.model.Order;
-import com.sprinter.demo.repository.GenericRepository;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import com.sprinter.demo.service.OrderService;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 
 @RequestMapping("/orders")
 @RestController
-public class OrderController extends GenericController<Order> {
+@Slf4j
+public class OrderController extends GenericController<Order, OrderService> {
 
-    protected OrderController(GenericRepository<Order> repository) {
+    protected OrderController(OrderService repository) {
         super(repository);
     }
+
+    @PatchMapping("/{id}")
+    public ResponseEntity<Order> partialUpdateOrder(@RequestParam @PathVariable Long id, @RequestBody Order order) {
+        log.info("Actualizando parcialmente el pedido");
+        return ResponseEntity.ok(this.genericService.partialUpdate(id, order));
+    }
+
 
 }

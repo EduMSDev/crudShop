@@ -1,13 +1,13 @@
 package com.sprinter.demo.service;
 
 import com.sprinter.demo.model.Order;
-import com.sprinter.demo.repository.GenericRepository;
+import com.sprinter.demo.repository.OrderRepository;
 import org.springframework.stereotype.Service;
 
 @Service
-public class OrderService extends GenericService<Order> {
+public class OrderService extends GenericService<Order, OrderRepository> {
 
-    public OrderService(GenericRepository<Order> repository) {
+    public OrderService(OrderRepository repository) {
         super(repository);
     }
 

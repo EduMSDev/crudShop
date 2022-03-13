@@ -10,7 +10,7 @@ import java.util.List;
 @Getter
 @Setter
 @Entity
-public class Product extends GenericEntity<Product> {
+public class Product extends GenericEntity {
 
     private String description;
 

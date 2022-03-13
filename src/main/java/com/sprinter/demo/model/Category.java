@@ -13,7 +13,7 @@ import java.util.List;
 @Getter
 @Setter
 @Entity
-public class Category extends GenericEntity<Category> {
+public class Category extends GenericEntity {
 
     private String description;
 

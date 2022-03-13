@@ -7,12 +7,11 @@ import com.sprinter.demo.repository.GenericRepository;
 import java.util.List;
 
 
-public class GenericService<T extends GenericEntity<T>> {
+public class GenericService<T extends GenericEntity, R extends GenericRepository<T>> implements IGenericService<T> {
 
+    protected R genericRepository;
 
-    private final GenericRepository<T> genericRepository;
-
-    public GenericService(GenericRepository<T> repository) {
+    public GenericService(R repository) {
         this.genericRepository = repository;
     }
 

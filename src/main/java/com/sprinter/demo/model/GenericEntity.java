@@ -15,7 +15,7 @@ import java.util.Date;
 @Getter
 @Setter
 @MappedSuperclass
-public abstract class GenericEntity<T> {
+public abstract class GenericEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
