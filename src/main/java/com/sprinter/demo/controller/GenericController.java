@@ -41,14 +41,14 @@ public abstract class GenericController<T extends GenericEntity, R extends IGene
     @PostMapping("/")
     public ResponseEntity<T> add(@RequestBody @Valid final T entity) {
         log.info("Incluyendo entidad");
-        return ResponseEntity.ok(genericService.add(entity));
+        return new ResponseEntity<>(genericService.add(entity), HttpStatus.CREATED);
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<T> delete(@RequestParam final Long id) {
+    public ResponseEntity<T> delete(@RequestParam @PathVariable final Long id) {
         log.info("Borrando entidad");
         genericService.delete(id);
-        return ResponseEntity.ok(null);
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 
     @PutMapping("/{id}")

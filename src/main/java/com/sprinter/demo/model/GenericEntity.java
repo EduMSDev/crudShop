@@ -28,7 +28,7 @@ public abstract class GenericEntity {
     private Long id;
 
     @NotNull(message = "El nombre no puede estar vacio")
-    @Size(min = 5, message = "La longitud no puede ser inferior a 5 caracteres")
+    @Size(min = 2, message = "La longitud no puede ser inferior a 2 caracteres")
     private String name;
 
     @CreationTimestamp
